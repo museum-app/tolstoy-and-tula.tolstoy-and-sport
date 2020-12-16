@@ -1,6 +1,6 @@
 {
   "name": "tas.app.turarabu.com",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "main.js",
   "author": {
     "name": "Turar Abu",
@@ -17,8 +17,10 @@
     "pack": "electron-builder --config build-config.json"
   },
   "dependencies": {
+    "adm-zip": "^0.5.1",
     "express": "^4.17.1",
-    "path-alias": "0.0.12"
+    "path-alias": "0.0.12",
+    "request": "^2.88.2"
   },
   "devDependencies": {
     "@vue/cli-service": "^4.5.8",
