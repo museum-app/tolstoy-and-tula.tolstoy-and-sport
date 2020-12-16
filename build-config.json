@@ -1,0 +1,30 @@
+{
+  "asar": false,
+  "appId": "com.turarabu.app.tolstoy.sport",
+  "productName": "Tolstoy and Sport",
+  "compression": "maximum",
+  "electronVersion": "10.1.5",
+  "detectUpdateChannel": false,
+  "directories": {
+    "output": "./dist"
+  },
+  "files": [
+    "!public",
+    "!frontend",
+
+    "!.browserslistrc",
+    "!.gitignore",
+    "!build-config.json",
+    "!vue.config.js",
+    "!*.md"
+  ],
+
+  "win": {
+    "target": "nsis"
+  },
+
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true
+  }
+}

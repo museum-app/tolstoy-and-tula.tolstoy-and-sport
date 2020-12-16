@@ -1,0 +1,36 @@
+{
+  "name": "tas.app.turarabu.com",
+  "version": "0.1.1",
+  "main": "main.js",
+  "author": {
+    "name": "Turar Abu",
+    "email": "doomwelcone@gmail.com",
+    "url": "https://github.com/turarabu"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/museum-app/tolstoy-and-tula.tolstoy-and-sport.git"
+  },
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "pack": "electron-builder --config build-config.json"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "path-alias": "0.0.12"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "^4.5.8",
+    "electron": "^10.1.5",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "raw-loader": "^4.0.2",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2",
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.6",
+    "vue-template-compiler": "^2.6.12",
+    "vuex": "^3.1.3"
+  }
+}
