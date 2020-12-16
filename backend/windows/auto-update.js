@@ -9,10 +9,10 @@ const config = pathAlias('@app/config')
 module.exports = { install }
 
 function install (list) {
-  list.autoUpdate = autoUpdate
+  list.autoUpdate = { create, close }
 }
 
-function autoUpdate () {
+function create () {
   const window = createWindow()
   
   window.on('ready-to-show', show)
@@ -33,6 +33,10 @@ function createWindow () {
       preload: pathAlias.resolve('@app/extra/ipcRenderer.js')
     }
   })
+}
+
+function close () {
+  local.window.close()
 }
 
 function show () {

@@ -11,5 +11,12 @@ async function start () {
   events.install()
 
   await server.start()
-  await window.autoUpdate()
+
+  app.on('start', _ => {
+    // TODO: app
+  })
+
+  if ( process.argv.includes('--skip-update') )
+    app.emit('start')
+  else window.autoUpdate.create()
 }
