@@ -167,17 +167,17 @@ function getPoster (source) {
       border-radius 10px
       box-shadow 0px 4px 4px RGBA(0, 0, 0, .25)
       cursor pointer
-      justify-content space-between
-      padding 12px 16px
+      justify-content center
+      padding 12px 0 12px 16px
       position absolute
       top 20px
       right 20px
-      width 240px
 
     .gallery-text
       font-family 'Oswald'
       font-size 36px
       line-height 53px
       letter-spacing .02em
+      margin 0 20px 0 26px
       text-transform uppercase
 </style>

@@ -17,11 +17,15 @@ export default {
 
 // state
 function getRu () {
-  return []
+  return [
+    '/video/rus/001-video.mp4'
+  ]
 }
 
 function getEn () {
-  return []
+  return [
+    '/video/eng/001-video.mp4'
+  ]
 }
 
 
