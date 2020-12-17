@@ -5,18 +5,26 @@ const server = pathAlias('@app/core/server')
 const events = pathAlias('@app/core/events')
 const window = pathAlias('@app/core/window')
 
-app.on('ready', start)
+const local = {
+  window: {}
+}
 
+app.on('ready', start)
 async function start () {
   events.install()
 
   await server.start()
 
   app.on('start', _ => {
-    // TODO: app
+    const main = local.window.main = window.main.create()
+
+    main.on('ready-to-show', () => {
+      if ( local.window.autoUpdate )
+        local.window.autoUpdate.destroy()
+    })
   })
 
   if ( process.argv.includes('--skip-update') )
     app.emit('start')
-  else window.autoUpdate.create()
+  else local.window.autoUpdate = window.autoUpdate.create()
 }
