@@ -42,7 +42,7 @@ function show () {
     this.classes.disable = false
     this.classes.hide = false
 
-    return setTimeout(resolve, 500)
+    return setTimeout(resolve, 300)
   })
 }
 
@@ -53,7 +53,7 @@ function hide () {
     setTimeout(() => {
       this.classes.disable = true
       return resolve()
-    }, 500)
+    }, 200)
   })
 }
 </script>
@@ -62,7 +62,7 @@ function hide () {
 #main
   background url('~assets/img/background.jpg')
   background-size cover
-  transition .5s all
+  transition .3s all
   &.hide
     opacity 0
   &.disable

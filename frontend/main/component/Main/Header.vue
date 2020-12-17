@@ -13,7 +13,7 @@
 #main .main-header
   margin 64px auto
   text-align center
-  width 1210px
+  width 1230px
 
   .title
     color $minor

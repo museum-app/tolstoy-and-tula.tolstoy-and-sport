@@ -1,10 +1,8 @@
 <template lang='pug'>
   
-  div( class='langs-div flex-center' )
+  div( class='langbox flex-center' )
     div( class='lang-button flex-center' :class='{ active: current === `en` }' )
       span( class='lang-text flex-center' @click='set(`en`)' ) Eng
-
-    span( class='delimiter' )
 
     div( class='lang-button flex-center' :class='{ active: current === `ru` }' )
       span( class='lang-text flex-center' @click='set(`ru`)' ) Ru
@@ -25,7 +23,6 @@ function current () {
 
 // methods
 function set (lang) {
-  console.log({ self: this })
   this.$store.commit('set-lang', lang)
 }
 </script>
@@ -33,16 +30,17 @@ function set (lang) {
 <style lang='stylus'>
 @import '~main/style/palette'
 
-#main .langs-div
-  width 260px
+#content .langbox
+  justify-content space-between
+  width 150px
 
   .lang-button
     background $minor
     box-shadow 0px 4px 4px RGBA(0, 0, 0, .25)
     border-radius 50%
     cursor pointer
-    height 110px
-    width 110px
+    height 65px
+    width 65px
 
     .lang-text
       background $major
@@ -51,11 +49,11 @@ function set (lang) {
       color $minor
       font-family Oswald
       font-weight 300
-      font-size 36px
-      line-height 53px
-      letter-spacing: 0.02em
-      height 100px
-      width 100px
+      font-size 24px
+      line-height 36px
+      letter-spacing 0.02em
+      height 59px
+      width 59px
 
   .lang-button.active
     cursor default
@@ -63,11 +61,4 @@ function set (lang) {
     .lang-text
       background $minor
       color $major
-
-  .delimiter
-    background $minor
-    display block
-    margin 0 16px
-    height 110px
-    width 3px
 </style>
