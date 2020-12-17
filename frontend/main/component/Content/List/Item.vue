@@ -15,12 +15,14 @@ export default {
       openned: false,
       last: {},
       styles: {
-        borderRadius: false,
-        maxHeight: '189px',
-        maxWidth: '336px',
-        position: false,
-        top: false,
-        left: false
+        borderRadius: '',
+        maxHeight: '',
+        maxWidth: '',
+        transition: '',
+        position: '',
+        top: '',
+        left: '',
+        zIndex: ''
       }
     }
   }
@@ -40,18 +42,20 @@ function open () {
   if ( this.openned ) return
 
   const { offsetTop, offsetLeft } = this.$refs.image
+  const { scrollTop } = document.scrollingElement
 
   this.styles.position = 'fixed'
-  this.styles.top = `${offsetTop}px`
+  this.styles.top = `${offsetTop - scrollTop }px`
   this.styles.left = `${offsetLeft}px`
+  this.styles.zIndex = 4
 
   this.last = { ...this.styles }
 
   setTimeout(() => {
     this.styles.maxHeight = '1080px'
     this.styles.maxWidth = '1920px'
-    this.styles.top = `0`
-    this.styles.left = `0`
+    this.styles.top = '0'
+    this.styles.left = '0'
 
     setTimeout(async () => {
       await this.$root.play(this)
@@ -65,8 +69,16 @@ function close () {
   this.styles = this.last
 
   setTimeout(() => {
-    this.styles.position = false
-    this.openned = false
+    this.styles.transition = 'none'
+    this.styles.position = ''
+    this.styles.top = ''
+    this.styles.left = ''
+    this.styles.zIndex = ''
+
+    setTimeout(() => {
+      this.styles.transition = ''
+      this.openned = false
+    }, 50)
   }, 300)
 }
 </script>
@@ -86,5 +98,5 @@ function close () {
     max-height 189px
     max-width 336px
     position relative
-    z-index 2
+    z-index 3
 </style>

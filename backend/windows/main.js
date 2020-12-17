@@ -9,17 +9,21 @@ const config = pathAlias('@app/config')
 module.exports = { install }
 
 function install (list) {
-  list.main = { create }
+  list.main = { create, target }
 }
 
 function create () {
   const window = createWindow()
   
-  window.on('ready-to-show', show)
+  window.on('ready-to-show', start)
   window.loadURL(config.start.main)
 
   local.window = window
   return window
+}
+
+function target () {
+  return local.window
 }
 
 function createWindow () {
@@ -34,10 +38,9 @@ function createWindow () {
   })
 }
 
-function show () {
+function start () {
   const window = local.window
 
   window.setMenu(null)
   window.maximize()
-  window.show()
 }

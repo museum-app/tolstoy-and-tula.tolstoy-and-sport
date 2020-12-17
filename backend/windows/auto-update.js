@@ -9,7 +9,7 @@ const config = pathAlias('@app/config')
 module.exports = { install }
 
 function install (list) {
-  list.autoUpdate = { create }
+  list.autoUpdate = { create, target }
 }
 
 function create () {
@@ -20,6 +20,10 @@ function create () {
 
   local.window = window
   return window
+}
+
+function target () {
+  return local.window
 }
 
 function createWindow () {

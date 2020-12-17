@@ -50,16 +50,16 @@ async function init () {
     }
 
   this.ready = true
+  ipc.async('show-main')
 }
 
 
 // methods
 async function next () {
-  if ( this.lock ) return
+  if ( this.lock || !this.ready ) return
   else this.lock = true
 
   await this.$refs.main.hide()
-  console.log(this.$refs)
   await this.$refs.content.show()
 
   this.lock = false
@@ -153,8 +153,9 @@ function getPoster (source) {
   .player-div
     background $black
     opacity 0
+    position fixed
     transition .5s all
-    z-index 3
+    z-index 5
     &.show
       opacity 1
 

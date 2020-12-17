@@ -1,3 +1,5 @@
+const list = []
+
 export default {
   state: {
     poster: {
@@ -5,8 +7,8 @@ export default {
       en: {}
     },
     video: {
-      ru: getRu(),
-      en: getEn()
+      ru: getFor('rus'),
+      en: getFor('eng')
     }
   },
 
@@ -15,17 +17,17 @@ export default {
   }
 }
 
-// state
-function getRu () {
-  return [
-    '/video/rus/001-video.mp4'
-  ]
-}
 
-function getEn () {
-  return [
-    '/video/eng/001-video.mp4'
-  ]
+// state
+function getFor (lang) {
+  const result = []
+  
+  list.forEach(video => {
+    const path = video.replace('%lang%', lang)
+    result.push(path)
+  })
+
+  return result
 }
 
 
