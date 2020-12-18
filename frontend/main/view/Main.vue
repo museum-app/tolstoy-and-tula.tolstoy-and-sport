@@ -28,13 +28,9 @@ export default {
 
 // methods
 function next (event) {
-  for ( let element of event.path ) {
-    let classes = element.classList
-    if ( classes && classes.contains('langs-div') )
-      return
-  }
-
-  this.$emit('next')
+  setTimeout(() => {
+    this.$emit('next')
+  }, 250)
 }
 
 function show () {
