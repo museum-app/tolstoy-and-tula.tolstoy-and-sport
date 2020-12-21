@@ -3,7 +3,7 @@
   div( class='content-list' )
     div( class='content-row' v-for='(clip, row) of content' )
       template( v-for='(video, id) of clip' )
-        Item( v-bind='{ id: row * 5 + id }' )
+        Item( v-bind='{ id: row * 5 + id }' ref='item' )
 
 </template>
 
@@ -12,8 +12,10 @@ import Item from ':main/component/Content/List/Item'
 
 export default {
   components: { Item },
-  computed: { content }
+  computed: { content },
+  methods: { change }
 }
+
 
 // computed
 function content () {
@@ -28,6 +30,20 @@ function content () {
   }
 
   return result
+}
+
+
+// methods
+async function change (from, n) {
+  const to = n < 0
+    ? this.$refs.item.length - 1
+    : n === this.$refs.item.length
+      ? 0 : n
+    
+  await this.$refs.item[from].close()
+  await this.$refs.item[to].open()
+
+  return this.$refs.item[to]
 }
 </script>
 

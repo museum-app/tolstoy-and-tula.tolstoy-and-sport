@@ -9,7 +9,7 @@
 export default {
   props: ['id'],
   computed: { poster },
-  methods: { open, close },
+  methods: { open, close, change },
   data: function () {
     return {
       openned: false,
@@ -38,35 +38,39 @@ function poster () {
 
 
 // methods
-function open () {
+async function open () {
   if ( this.openned ) return
 
-  const { offsetTop, offsetLeft } = this.$refs.image
-  const { scrollTop } = document.scrollingElement
+  return new Promise(resolve => {
+    const { offsetTop, offsetLeft } = this.$refs.image
+    const { scrollTop } = document.scrollingElement
 
-  this.styles.position = 'fixed'
-  this.styles.top = `${offsetTop - scrollTop }px`
-  this.styles.left = `${offsetLeft}px`
-  this.styles.zIndex = 4
+    this.styles.position = 'fixed'
+    this.styles.top = `${offsetTop - scrollTop }px`
+    this.styles.left = `${offsetLeft}px`
+    this.styles.zIndex = 4
 
-  this.last = { ...this.styles }
+    this.last = { ...this.styles }
 
-  setTimeout(() => {
-    this.styles.maxHeight = '1080px'
-    this.styles.maxWidth = '1920px'
-    this.styles.top = '0'
-    this.styles.left = '0'
+    setTimeout(() => {
+      this.styles.maxHeight = '1080px'
+      this.styles.maxWidth = '1920px'
+      this.styles.top = '0'
+      this.styles.left = '0'
 
-    setTimeout(async () => {
-      await this.$root.play(this)
-      return this.openned = true
-    }, 300)
-  }, 150)
+      setTimeout(async () => {
+        await this.$root.play(this)
+        this.openned = true
+        return resolve()
+      }, 300)
+    }, 150)
+  })
 }
 
 
-function close () {
-  this.styles = this.last
+async function close () {
+  return new Promise(resolve => {
+    this.styles = this.last
 
   setTimeout(() => {
     this.styles.transition = 'none'
@@ -78,8 +82,19 @@ function close () {
     setTimeout(() => {
       this.styles.transition = ''
       this.openned = false
+
+      return resolve()
     }, 50)
   }, 300)
+  })
+}
+
+function change (side) {
+  const to = side === 'next'
+    ? this.id + 1
+    : this.id - 1
+  
+  return this.$parent.change(this.id, to)
 }
 </script>
 
