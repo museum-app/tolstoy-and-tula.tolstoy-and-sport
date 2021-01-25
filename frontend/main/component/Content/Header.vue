@@ -42,10 +42,10 @@ export default {
   .header-title-div
     background $major-light
     height 50px
-    width 315px
+    width 122px
     position absolute
-    top calc(50% - 27.5px)
-    left calc(50% - 157.5px)
+    top calc(50% - 48px)
+    left calc(50% - 51px)
 
   .langbox-div
     width 150px
