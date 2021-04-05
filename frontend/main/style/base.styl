@@ -1,12 +1,12 @@
 @import './palette'
-@import '~assets/font/oswald/stylesheet'
-@import '~assets/font/nocturne-serif/stylesheet'
+@import './font/oswald/index'
+@import './font/nocturne-serif/index'
 
 *
   box-sizing border-box
   margin 0
   padding 0
-  transition .3s all, .15s opacity
+  transition .3s all
   user-select none
 
 ::-webkit-scrollbar
@@ -19,11 +19,13 @@
 ::-webkit-scrollbar-thumb
   display none
 
+
 body
-  color $default
+  color $minor
 
 .adaptive
-  margin 0 76px
+  margin 0 auto
+  width 85.5vw
 
 .full
   position absolute

@@ -15,9 +15,19 @@ async function start () {
 
   await server.start()
 
-  app.on('start', window.main.create)
-
   if ( process.argv.includes('--skip-update') )
     app.emit('start')
   else local.window.autoUpdate = window.autoUpdate.create()
+
+  app.on('start', () => {
+    const mainWindow = window.main.create()
+
+    mainWindow.on('ready-to-show', () => {
+      mainWindow.setMenu(null)
+      mainWindow.show()
+      mainWindow.maximize()
+
+      local.window.autoUpdate.destroy()
+    })
+  })
 }

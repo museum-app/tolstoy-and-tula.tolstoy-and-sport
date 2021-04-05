@@ -15,7 +15,6 @@ function install (list) {
 function create () {
   const window = createWindow()
   
-  window.on('ready-to-show', start)
   window.loadURL(config.start.main)
 
   local.window = window
@@ -36,11 +35,4 @@ function createWindow () {
       preload: pathAlias.resolve('@app/extra/ipcRenderer.js')
     }
   })
-}
-
-function start () {
-  const window = local.window
-
-  window.setMenu(null)
-  window.maximize()
 }
